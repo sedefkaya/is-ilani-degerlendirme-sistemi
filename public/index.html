@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>İş İlanı Değerlendirme Sistemi</title>
+</head>
+<body>
+    <header>
+      <div class="logo">
+        <h1><em><strong>İŞ İLANI<br>DEĞERLENDİRME<br>SİSTEMİ</strong></em></h1>
+      </div>
+      <nav class ="nav-buttons">
+        <button id="homeButton">HOME</button>
+        <button id="menuButton">MENU</button>
+      </nav>
+      <div class="search-box">
+        <input type="text" placeholder="🔍 Search">
+      </div>
+    </header>
+
+    <div id="sidePanel" class="side-panel">
+      <button id="closeButton" class="close-btn-panel">Kapat</button>
+      <ul>
+        <li><a href="#" id="myAccountLink" class="nav-link hidden">Hesabım</a></li>
+        <li><a href="#" id="adsLink" class="nav-link hidden">İlanlar</a></li>
+        <li><a href="#" id="applicationsLink" class="nav-link hidden">Başvurular</a></li>
+        <li><a href="#" id="employerLink" class="nav-link hidden">İşveren Paneli</a></li>
+        <li><a href="#" id="usersListLink" class="nav-link hidden">Kullanıcı Listesi</a></li>
+        <li><a href="#" id="logoutLink" class="nav-link hidden">Çıkış YAP</a></li>
+        <li><a href="#" id="loginPageButton" class="nav-link hidden">Giriş YAP</a></li>
+        <li><a href="#" id="registerPageButton" class="nav-link hidden">Kayıt OL</a></li>
+      </ul>
+    </div
+
+    <div id="homePage" class="page-section active">
+      <main>
+        <section class="WELCOME">
+          <h2>HOŞ GELDİNİZ</h2>
+          <p id="welcomeMessage" class="text-lg font-semibold text-center mt-4 hidden"></p>
+          
+          <p>İş İlanı Değerlendirme Sistemine Hoş geldiniz.<br>Profil bilgilerini doldurarak iş arayabilir veya iş ilanı açabilirsiniz</p>
+        </section>
+        <section class="actions">
+          <button class="login-btn-main" id="mainLoginPageButton">GİRİŞ YAP</button>
+          <button class="register-btn-main" id="mainRegisterPageButton">KAYIT OL</button>
+        </section>
+      </main>
+    </div>
+
+    <div id="loginRegisterPage" class="page-section login-register-page-layout">
+        <div class="login-panel-container">
+            <div class="login-panel user-panel">
+                <h2 class="panel-title">KULLANICI GİRİŞİ</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email address</label>
+                        <div class="input-container">
+                            <input type="email" id="loginEmail" placeholder="email@address.com">
+                            <span class="icon">✉️</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-container">
+                            <input type="password" id="loginPassword" placeholder="••••••••••••">
+                            <span class="icon">🔒</span>
+                            <span class="password-toggle">👁️</span>
+                        </div>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#" id="forgotPasswordLink">Forgot password?</a>
+                    </div>
+                    <p id="loginError" class="error-message"></p>
+                    <button type="submit" class="login-btn">Log in</button>
+                    <div class="remember-me">
+                        <input type="checkbox" id="user-remember">
+                        <label for="user-remember">Remember me</label>
+                    </div>
+                    <div class="or-separator">Or</div>
+                    <button type="button" class="google-login-btn">
+                        <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_64dp.png" alt="Google Logo">
+                        Sign in with Google
+                    </button>
+                    <div class="signup-link">
+                        Don't have an account? <a href="#" id="signupLink">Sign up here</a>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="login-panel employer-panel">
+                <h2 class="panel-title">İŞVEREN GİRİŞİ</h2>
+                <form id="employerLoginForm">
+                    <div class="form-group">
+                        <label for="employerLoginEmail">Email address</label>
+                        <div class="input-container">
+                            <input type="email" id="employerLoginEmail" placeholder="email@address.com">
+                            <span class="icon">✉️</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="employerLoginPassword">Password</label>
+                        <div class="input-container">
+                            <input type="password" id="employerLoginPassword" placeholder="••••••••••••">
+                            <span class="icon">🔒</span>
+                            <span class="password-toggle">👁️</span>
+                        </div>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#" id="forgotPasswordLinkEmployer">Forgot password?</a>
+                    </div>
+                    <p id="employerLoginError" class="error-message"></p>
+                    <button type="submit" class="login-btn">Log in</button>
+                    <div class="remember-me">
+                        <input type="checkbox" id="employer-remember">
+                        <label for="employer-remember">Remember me</label>
+                    </div>
+                    <div class="or-separator">Or</div>
+                    <button type="button" class="google-login-btn">
+                        <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_64dp.png" alt="Google Logo">
+                        Sign in with Google
+                    </button>
+                    <div class="signup-link">
+                        Don't have an account? <a href="#" id="signupLinkEmployer">Sign up here</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <button class="back-to-home-btn" id="loginRegisterBackToHomeButton">&lt; Geri</button>
+    </div>
+
+    <div id="forgotPasswordPage" class="page-section forgot-password-layout">
+        <div class="login-panel-container">
+            <div class="forgot-password-panel">
+                <h2 class="forgot-password-title">Forgot password?</h2>
+                <p class="forgot-password-text">Enter your email and we'll send you a link to reset your password.</p>
+                <form>
+                    <div class="form-group">
+                        <label for="forgot-password-email">Email address</label>
+                        <div class="input-container">
+                            <input type="email" id="forgot-password-email" placeholder="email@address.com">
+                            <span class="icon">✉️</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="reset-password-btn" id="resetPasswordButton">
+                        Reset Password
+                        <span class="btn-icon">⚡</span>
+                    </button>
+                </form>
+                <div class="back-to-sign-in">
+                    <a href="#" id="backToSignInLink">Go back to Sign In.</a>
+                    <span class="back-icon">⚡</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkEmailPage" class="page-section check-email-layout">
+        <div class="login-panel-container">
+            <div class="forgot-password-panel">
+                <h2 class="forgot-password-title">Check your email</h2>
+                <p class="forgot-password-text">We have sent a password recovery instructions to your email address.</p>
+                <div class="resend-message">
+                    Didn't receive the email? Check your spam folder or try to <a href="#">Re-send the message.</a>
+                </div>
+                <button type="button" class="back-to-sign-in-btn" id="checkEmailBackToSignInButton">
+                    Go back to Sign In.
+                    <span class="btn-icon">⚡</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerPage" class="page-section register-layout">
+        <div class="login-panel-container">
+            <div class="register-panel">
+                <h2 class="panel-title">HESAP OLUŞTUR</h2>
+                <button type="button" class="google-login-btn">
+                    <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_64dp.png" alt="Google Logo">
+                    Continue with Google
+                </button>
+                <div class="or-separator">Or</div>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="register-name">Ad Soyad</label>
+                        <div class="input-container">
+                            <input type="text" id="register-name" placeholder="Adınız Soyadınız">
+                            <span class="icon">👤</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email address</label>
+                        <div class="input-container">
+                            <input type="email" id="register-email" placeholder="email@address.com">
+                            <span class="icon">✉️</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <div class="input-container">
+                            <input type="password" id="register-password" placeholder="••••••••••••">
+                            <span class="icon">🔒</span>
+                            <span class="password-toggle">👁️️</span>
+                        </div>
+                    </div>
+                    <p id="registerError" class="error-message"></p>
+                    <div class="remember-me">
+                        <input type="checkbox" id="receive-news">
+                        <label for="receive-news">Receive news, updates and deals</label>
+                    </div>
+                    <button type="submit" class="create-account-btn">
+                        Create Account
+                        <span class="btn-icon">⚡</span>
+                    </button>
+                </form>
+                <div class="signup-link">
+                    Already have an account? <a href="#" id="loginHereLink">Log in here</a>
+                    <span class="back-icon">⚡</span>
+                </div>
+            </div>
+        </div>
+        <button class="back-to-home-btn" id="registerBackToHomeButton">&lt; Geri</button>
+    </div>
+
+
+
+
+
+
+
+
+    
+    <div id="profilePage" class="page-section profile-layout">
+        <div class="profile-container">
+            <div class="profile-info-panel">
+                <div class="profile-header">
+                    <h2>Profilini Oluştur</h2>
+                    <div class="profile-pic-container">
+                        <img src="https://placehold.co/100x100/AAB7C6/FFFFFF?text=📸" alt="Profil fotoğrafı" class="profile-pic">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="full-name">Ad Soyad</label>
+                    <input type="text" id="full-name" placeholder="Placeholder">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="Placeholder">
+                </div>
+                <div class="form-group">
+                    <label for="address">Adres</label>
+                    <input type="text" id="address" placeholder="Placeholder">
+                </div>
+                <div class="form-group">
+                    <label for="phone">TEL:</label>
+                    <input type="tel" id="phone" placeholder="Placeholder">
+                </div>
+
+                <div class="form-group gender-section">
+                    <label>Cinsiyet:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="male" name="gender" value="erkek">
+                        <label for="male">erkek</label>
+                        <input type="radio" id="female" name="gender" value="kadın">
+                        <label for="female">kadın</label>
+                        <span class="icon">⚡</span>
+                    </div>
+                </div>
+
+                <div id="militaryServiceSection" class="form-group military-section" style="display: none;">
+                    <input type="checkbox" id="military-service">
+                    <label for="military-service">Askerlik</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="birth-date">Doğum Tarihi:</label>
+                    <div class="input-container">
+                        <input type="date" id="birth-date">
+                        <span class="icon">📅</span>
+                    </div>
+                </div>
+
+                <div class="form-group marital-section">
+                    <label>Medeni Durum:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="married" name="marital-status" value="married">
+                        <label for="married">evli</label>
+                        <input type="radio" id="single" name="marital-status" value="single">
+                        <label for="single">bekar</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="city-select">Şehir:</label>
+                    <select id="city-select">
+                        <option>Şehirler</option>
+                        <option>Ankara</option>
+                        <option>İzmir</option>
+                        <option>İstanbul</option>
+                    </select>
+                </div>
+
+                <div class="form-group license-section">
+                    <label>Ehliyet:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="license-yes" name="license" value="var">
+                        <label for="license-yes">Var</label>
+                        <input type="radio" id="license-no" name="license" value="yok">
+                        <label for="license-no">Yok</label>
+                    </div>
+                </div>
+
+                <span class="icon bottom-left">⚡</span>
+            </div>
+
+            <div class="education-panel">
+                <h2>Eğitim Bilgileri</h2>
+                <div class="form-group">
+                    <label for="education-level">Öğrenim Durumu</label>
+                    <select id="education-level">
+                        <option>Ortaokul</option>
+                        <option>Lise</option>
+                        <option>ÖnLisans</option>
+                        <option>Lisans</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="university">Üniversite:</label>
+                    <input type="text" id="university" placeholder="Placeholder">
+                </div>
+                <div class="form-group">
+                    <label for="department">Bölüm:</label>
+                    <input type="text" id="department" placeholder="Placeholder">
+                </div>
+                <div class="form-group experience-section">
+                    <label>Deneyim Süresi :</label>
+                    <input type="number" placeholder="yıl">
+                    <input type="number" placeholder="ay">
+                    <input type="number" placeholder="gün">
+                </div>
+
+                <div class="form-group language-section">
+                    <label for="language-input">Yabancı dil</label>
+                    <input type="text" id="language-input" placeholder="Örn: Almanca, İtalyanca">
+                
+                    <label for="language-level">Seviye</label>
+                    <select id="language-level">
+                        <option value="1">Başlangıç</option>
+                        <option value="2">Orta</option>
+                        <option value="3">İleri</option>
+                    </select>
+                    <button id="addLanguageBtn" class="add-language-btn" type="button">Dil Ekle</button>
+                </div>
+                
+                <div id="added-languages-container">
+                </div>
+                
+                <div class="form-group cv-upload-section">
+                    <label>CV ekle:</label>
+                    <button class="upload-cv-btn">YÜKLE</button>
+                </div>
+                <div class="profile-buttons">
+                    <button id="saveProfileBtn"  class="save-profile-btn">KAYDET</button>
+                    <span class="icon">⚡</span>
+                </div>
+            </div>
+        </div>
+        <button class="back-to-home-btn" id="profileBackToHomeButton">&lt; Geri</button>
+    </div>
+
+    <div id="applicationsPage" class="page-section applications-layout">
+        <div class="applications-container">
+            <h2>Başvurularım</h2>
+            <div class="applications-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>İlan ADI</th>
+                            <th>SİSTEM KARARI</th>
+                            <th>DETAY</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applicationsTableBody">
+                        <tr>
+                            <td>A</td>
+                            <td class="status-suitable">UYGUN</td>
+                            <td><button class="view-btn">Görüntüle</button></td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td class="status-suitable">UYGUN</td>
+                            <td><button class="view-btn">Görüntüle</button></td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td class="status-not-suitable">UYGUN DEĞİL</td>
+                            <td><button class="view-btn">Görüntüle</button></td>
+                        </tr>
+                        <tr>
+                            <td>D</td>
+                            <td class="status-not-suitable">UYGUN DEĞİL</td>
+                            <td><button class="view-btn">Görüntüle</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="back-to-home-btn" id="applicationsBackToHomeButton">&lt; Geri</button>
+    </div>
+
+    <div id="adsPage" class="page-section ads-layout">
+        <div class="ads-container">
+            <h2>ilanlar</h2>
+            <!-- SADECE ARAMA ÇUBUĞU KALDI -->
+            <div class="filter-bar">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="job-ads-grid">
+                <div class="ad-card">
+                    <h3>POZİSYON ADI:</h3>
+                    <p>Firma Adı :</p>
+                    <p>Lokasyon :</p>
+                    <p>Tarih:</p>
+                    <p>Eğitim:</p>
+                    <p class="publish-date">yayınlanma tarihi : ....</p>
+                    <button class="apply-btn">BAŞVUR ⚡</button>
+                </div>
+                <div class="ad-card">
+                    <h3>POZİSYON ADI:</h3>
+                    <p>Firma Adı :</p>
+                    <p>Lokasyon :</p>
+                    <p>Tarih:</p>
+                    <p>Eğitim:</p>
+                    <p class="publish-date">yayınlanma tarihi : ....</p>
+                    <button class="apply-btn">BAŞVUR ⚡</button>
+                </div>
+                <div class="ad-card">
+                    <h3>POZİSYON ADI:</h3>
+                    <p>Firma Adı :</p>
+                    <p>Lokasyon :</p>
+                    <p>Tarih:</p>
+                    <p>Eğitim:</p>
+                    <p class="publish-date">yayınlanma tarihi : ....</p>
+                    <button class="apply-btn">BAŞVUR ⚡</button>
+                </div>
+                <div class="ad-card">
+                    <h3>POZİSYON ADI:</h3>
+                    <p>Firma Adı :</p>
+                    <p>Lokasyon :</p>
+                    <p>Tarih:</p>
+                    <p>Eğitim:</p>
+                    <p class="publish-date">yayınlanma tarihi : ....</p>
+                    <button class="apply-btn">BAŞVUR ⚡</button>
+                </div>
+                <div class="ad-card">
+                    <h3>POZİSYON ADI:</h3>
+                    <p>Firma Adı :</p>
+                    <p>Lokasyon :</p>
+                    <p>Tarih:</p>
+                    <p>Eğitim:</p>
+                    <p class="publish-date">yayınlanma tarihi : ....</p>
+                    <button class="apply-btn">BAŞVUR ⚡</button>
+                </div>
+                <div class="ad-card">
+                    <h3>POZİSYON ADI:</h3>
+                    <p>Firma Adı :</p>
+                    <p>Lokasyon :</p>
+                    <p>Tarih:</p>
+                    <p>Eğitim:</p>
+                    <p class="publish-date">yayınlanma tarihi : ....</p>
+                    <button class="apply-btn">BAŞVUR ⚡</button>
+                </div>
+            </div>
+        </div>
+        <button class="back-to-home-btn" id="adsBackToHomeButton">&lt; Geri</button>
+    </div>
+    
+
+    <div id="employerPage" class="page-section employer-layout">
+        <div class="employer-container">
+            <h2>HOŞGELDİNİZ FİRMA İSMİ</h2>
+            <div class="add-ad-section">
+                <button class="add-ad-btn">
+                    <span class="icon">⚡</span>
+                    Yeni İlan Ekle
+                </button>
+            </div>
+            <h3>Yayındaki İlanlar</h3>
+            <div class="employer-ads-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pozisyon</th>
+                            <th>Tarih</th>
+                            <th>Başvuru Sayısı</th>
+                            <th>Durum</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>Tarih1</td>
+                            <td>5</td>
+                            <td class="status-active">Aktif</td>
+                            <td>
+                                <button class="edit-btn">DÜZENLE</button>
+                                <button class="delete-btn">SİL</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>Tarih2</td>
+                            <td>15</td>
+                            <td class="status-passive">Pasif</td>
+                            <td>
+                                <button class="edit-btn">DÜZENLE</button>
+                                <button class="delete-btn">SİL</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="back-to-home-btn" id="employerBackToHomeButton">&lt; Geri</button>
+    </div>
+
+    <div id="newAdPage" class="page-section new-ad-layout hidden">
+        <div class="form-container">
+            <h2>Yeni İş İlanı Ekle</h2>
+            <form id="newAdForm">
+                <div class="form-group">
+                    <label for="adPosition">Pozisyon:</label>
+                    <select id="adPosition" name="position" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="adCity">Şehir:</label>
+                    <select id="adCity" name="city" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="adEducation">Eğitim Durumu:</label>
+                    <select id="adEducation" name="education" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="adExperience">Deneyim:</label>
+                    <input type="text" id="adExperience" name="experience" placeholder="Örn: 2-5 yıl" required>
+                </div>
+                <div class="form-group">
+                    <label for="adDriverLicense">Ehliyet:</label>
+                    <select id="adDriverLicense" name="driverLicense"></select>
+                </div>
+                <div class="form-group">
+                    <label for="adMilitary">Askerlik Durumu:</label>
+                    <select id="adMilitary" name="military"></select>
+                </div>
+                <div class="form-group">
+                    <label for="adLanguage">Yabancı Dil:</label>
+                    <select id="adLanguage" name="language"></select>
+                </div>
+                <div class="form-group">
+                    <label for="adGender">Cinsiyet:</label>
+                    <select id="adGender" name="gender">
+                        <option value="Farketmez">Farketmez</option>
+                        <option value="Erkek">Erkek</option>
+                        <option value="Kadın">Kadın</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-ad-btn">İlanı Yayımla</button>
+            </form>
+        </div>
+        <button class="back-to-home-btn" id="newAdBackToEmployerButton">&lt; Geri</button>
+    </div>
+    
+    <div id="usersListPage" class="page-section users-list-layout">
+        <div class="users-container">
+            <h2>Veritabanındaki Kullanıcılar</h2>
+            <button id="fetch-users-btn">Kullanıcıları Getir</button>
+            <div id="users-container-table">
+                <p id="loading-message" class="hidden">Veriler yükleniyor...</p>
+                <table id="users-table" class="hidden">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ad Soyad</th>
+                            <th>E-posta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="back-to-home-btn" id="usersListBackToHomeButton">&lt; Geri</button>
+    </div>
+
+  <script src="script.js" defer></script>
+  <script src="jobAds.js" defer></script>
+  <script src="employer.js" defer></script>
+</body>
+</html>

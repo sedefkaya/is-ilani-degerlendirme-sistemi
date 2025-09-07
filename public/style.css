@@ -1,0 +1,1016 @@
+/* Genel Ayarlar ve Font */
+body {
+   font-family: 'Open Sans', sans-serif;
+   background-color: #5d738f; /* Moqups'taki ana arka plan rengi */
+   display: flex;
+   flex-direction: column; /* Dikey hizalama için */
+   min-height: 100vh;
+   margin: 0;
+   overflow-x: hidden; /* Yatay kaydırmayı engelle */
+}
+
+/* Header Stilleri */
+header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px 20px;
+   background-color: #4a5d72; /* Header arka planı - moqups'taki koyu mavi/gri */
+   color: white;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+   width: 100%;
+   box-sizing: border-box;
+}
+
+.logo h1 {
+   margin: 0;
+   font-size: 1.5em; /* Logo yazı boyutu */
+   line-height: 1.2;
+   font-weight: 700; /* Bold */
+   font-style: italic; /* Italic */
+}
+
+.nav-buttons button {
+   background-color: #6a829e; /* Buton arka planı - moqups'taki açık mavi/gri */
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   margin-left: 10px;
+   border-radius: 8px; /* Daha yuvarlak köşeler */
+   cursor: pointer;
+   font-weight: bold;
+   transition: background-color 0.3s ease;
+}
+
+.nav-buttons button:hover {
+   background-color: #5a708a; /* Hover rengi */
+}
+
+.search-box input {
+   padding: 8px 15px;
+   border: none;
+   border-radius: 5px;
+   background-color: #e0e0e0; /* Açık gri */
+   font-size: 1em;
+   color: #333; /* Yazı rengi */
+}
+
+/* Yan Panel Stilleri */
+.side-panel {
+   height: 100%;
+   width: 0; /* Başlangıçta gizli */
+   position: fixed;
+   z-index: 1000;
+   top: 0;
+   left: 0;
+   background-color: #333; /* Koyu gri */
+   overflow-x: hidden;
+   transition: 0.5s;
+   padding-top: 60px;
+   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.side-panel ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+.side-panel ul li a {
+   padding: 15px 25px;
+   text-decoration: none;
+   font-size: 20px;
+   color: #f1f1f1; /* Beyaz/açık gri */
+   display: block;
+   transition: 0.3s;
+}
+
+.side-panel ul li a:hover {
+   color: #fff;
+   background-color: #555;
+}
+
+.close-btn-panel { /* Yan paneldeki kapat butonu */
+   position: absolute;
+   top: 10px;
+   right: 25px;
+   font-size: 36px;
+   background: none;
+   border: none;
+   color: #fff;
+   cursor: pointer;
+}
+
+/* Ana İçerik (Main) Stilleri */
+main {
+   flex-grow: 1; /* Kalan alanı kapla */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 20px;
+   text-align: center;
+   color: white;
+}
+
+.WELCOME h2 {
+   font-size: 2.5em;
+   margin-bottom: 10px;
+}
+
+.WELCOME p {
+   font-size: 1.2em;
+   line-height: 1.5;
+}
+
+.actions {
+   margin-top: 30px;
+}
+
+.login-btn-main, .register-btn-main {
+   background-color: #6a829e; /* Moqups'taki buton rengi */
+   color: white;
+   border: none;
+   padding: 15px 30px;
+   margin: 0 10px;
+   border-radius: 8px;
+   cursor: pointer;
+   font-size: 1.1em;
+   font-weight: bold;
+   transition: background-color 0.3s ease;
+}
+
+.login-btn-main:hover, .register-btn-main:hover {
+   background-color: #5a708a;
+}
+
+/* Sayfa Geçişleri İçin Genel Sınıflar */
+.page-section {
+   width: 100%;
+   display: none; /* Varsayılan olarak tüm sayfa bölümlerini gizle */
+   justify-content: center;
+   align-items: center;
+   flex-grow: 1; /* Kalan alanı kapla */
+   box-sizing: border-box;
+   padding: 20px;
+   position: relative; /* Geri butonu için */
+}
+
+.page-section.active {
+   display: block; /* Aktif olanı göster */
+}
+
+/* Giriş/Kayıt Sayfası ve Şifremi Unuttum Sayfası Stilleri */
+.login-register-page-layout, .forgot-password-layout, .check-email-layout, .register-layout {
+   flex-direction: column; /* İçerik dikey hizalansın */
+   align-items: center; /* Ortala */
+   justify-content: center; /* Ortala */
+}
+
+.login-panel-container {
+   display: flex;
+   justify-content: center;
+   gap: 40px;
+   background-color: #a4b5c7; /* Moqups'taki dış panel arka planı */
+   border-radius: 40px;
+   padding: 60px;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+   max-width: 100%;
+   flex-wrap: wrap;
+}
+
+/* Panel Stilleri */
+.login-panel, .forgot-password-panel, .register-panel, .profile-info-panel, .education-panel, .applications-container, .ads-container, .employer-container {
+   background-color: #d1d9e2; /* Moqups'taki iç panel arka planı */
+   border-radius: 30px; /* Moqups'a uygun yuvarlatma */
+   padding: 40px;
+   width: 450px;
+   max-width: 100%;
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+   box-sizing: border-box;
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+.panel-title {
+   font-size: 24px;
+   font-weight: 700;
+   color: #333;
+   margin-bottom: 30px;
+   text-transform: uppercase;
+}
+
+/* Form Elemanları */
+.form-group {
+   text-align: left;
+   margin-bottom: 20px;
+}
+
+label {
+   display: block;
+   font-size: 14px;
+   color: #666;
+   margin-bottom: 5px;
+}
+
+.input-container {
+   position: relative;
+}
+
+.input-container input, input, select {
+   width: 100%;
+   padding: 12px 15px;
+   border: 1px solid #ccc;
+   border-radius: 8px;
+   font-size: 16px;
+   box-sizing: border-box;
+   background-color: #fff;
+}
+
+.input-container input {
+   padding-left: 45px;
+}
+
+.input-container .icon {
+   position: absolute;
+   left: 15px;
+   top: 50%;
+   transform: translateY(-50%);
+   color: #888;
+}
+
+.password-toggle {
+   position: absolute;
+   right: 15px;
+   top: 50%;
+   transform: translateY(-50%);
+   cursor: pointer;
+   color: #888;
+}
+
+.forgot-password {
+   text-align: right;
+   margin-bottom: 20px;
+}
+
+.forgot-password a {
+   color: #5d738f;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+.login-btn, .create-account-btn, .back-to-sign-in-btn, .reset-password-btn, .save-profile-btn, .update-profile-btn {
+   width: 100%;
+   padding: 15px;
+   background-color: #4b4b4b;
+   color: #fff;
+   border: none;
+   border-radius: 8px;
+   font-size: 18px;
+   font-weight: 600;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.login-btn:hover, .create-account-btn:hover, .back-to-sign-in-btn:hover, .reset-password-btn:hover, .save-profile-btn:hover, .update-profile-btn:hover {
+   background-color: #333;
+}
+
+.btn-icon {
+   margin-left: 10px;
+}
+
+.remember-me {
+   text-align: left;
+   margin-top: 15px;
+   display: flex;
+   align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+   margin-right: 10px;
+}
+
+.or-separator {
+   margin: 20px 0;
+   text-align: center;
+   position: relative;
+   color: #888;
+}
+
+.or-separator::before,
+.or-separator::after {
+   content: '';
+   position: absolute;
+   top: 50%;
+   width: 40%;
+   height: 1px;
+   background-color: #ccc;
+}
+
+.or-separator::before {
+   left: 0;
+}
+
+.or-separator::after {
+   right: 0;
+}
+
+.google-login-btn {
+   width: 100%;
+   padding: 10px;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 8px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 16px;
+   font-weight: 600;
+   color: #333;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.google-login-btn img {
+   width: 24px;
+   height: 24px;
+   margin-right: 10px;
+}
+
+.google-login-btn:hover {
+   background-color: #f1f1f1;
+}
+
+.signup-link {
+   margin-top: 25px;
+   font-size: 14px;
+   color: #666;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.signup-link a {
+   color: #5d738f;
+   text-decoration: none;
+   font-weight: 600;
+   margin-right: 5px;
+}
+
+.signup-link a:hover {
+   text-decoration: underline;
+}
+
+.back-icon {
+   font-size: 16px;
+   color: #5d738f;
+}
+
+/* Ana sayfadan Geri butonu */
+.back-to-home-btn {
+   background-color: #6a829e;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   border-radius: 8px;
+   cursor: pointer;
+   font-weight: bold;
+   transition: background-color 0.3s ease;
+   position: absolute;
+   bottom: 20px;
+   left: 20px;
+}
+
+.back-to-home-btn:hover {
+   background-color: #5a708a;
+}
+
+/* Şifremi Unuttum Sayfası Stilleri */
+.forgot-password-layout {
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.forgot-password-title {
+   font-size: 24px;
+   font-weight: 700;
+   color: #333;
+   margin-bottom: 10px;
+}
+
+.forgot-password-text {
+   font-size: 14px;
+   color: #666;
+   margin-bottom: 30px;
+   line-height: 1.5;
+}
+
+/* E-postanızı Kontrol Edin Sayfası Stilleri */
+.resend-message {
+   font-size: 14px;
+   color: #666;
+   margin-top: 30px;
+   line-height: 1.5;
+}
+
+.resend-message a {
+   color: #5d738f;
+   text-decoration: none;
+   font-weight: 600;
+}
+
+/* Profil Oluşturma Sayfası Stilleri */
+.profile-layout {
+   flex-direction: column;
+   align-items: center;
+}
+
+.profile-container {
+   display: flex;
+   gap: 40px;
+   background-color: #a4b5c7;
+   border-radius: 40px;
+   padding: 60px;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+   max-width: 100%;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.profile-info-panel, .education-panel {
+   width: 500px;
+   max-width: 100%;
+   background-color: #d1d9e2;
+   border-radius: 30px;
+   padding: 40px;
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+   box-sizing: border-box;
+   text-align: left;
+   position: relative;
+}
+
+/* Askerlik bölümü varsayılan olarak gizli */
+#militaryServiceSection {
+   display: block;
+}
+
+.profile-header {
+   display: flex;
+   align-items: center;
+   margin-bottom: 30px;
+}
+
+.profile-header h2, .education-panel h2 {
+   font-size: 24px;
+   font-weight: 700;
+   color: #333;
+   margin: 0;
+   margin-right: auto;
+}
+
+.profile-pic-container {
+   width: 100px;
+   height: 100px;
+   border-radius: 50%;
+   background-color: #aab7c6;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
+}
+
+.profile-pic {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.form-group.gender-section .radio-group,
+.form-group.marital-section .radio-group,
+.form-group.license-section .radio-group {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+   margin-top: 10px;
+}
+
+.radio-group input[type="radio"] {
+   width: auto;
+}
+
+.form-group.military-section {
+   margin-top: 20px;
+}
+
+.form-group.experience-section {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.form-group.experience-section input {
+   width: calc(33.33% - 10px);
+}
+
+.form-group.language-section {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 10px;
+}
+
+.add-language-btn, .upload-cv-btn {
+   width: auto;
+   padding: 10px 20px;
+   background-color: #6a829e;
+   color: white;
+   border: none;
+   border-radius: 8px;
+   font-weight: 600;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   margin-top: 10px;
+}
+
+.add-language-btn:hover, .upload-cv-btn:hover {
+   background-color: #5a708a;
+}
+
+.profile-buttons {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 10px;
+   margin-top: 30px;
+}
+
+.save-profile-btn, .update-profile-btn {
+   width: 100%;
+}
+
+.profile-buttons .icon {
+   font-size: 24px;
+   color: #5d738f;
+   margin-top: 10px;
+}
+
+.icon.bottom-left {
+   position: absolute;
+   bottom: 20px;
+   left: 20px;
+}
+
+/* Başvurularım Sayfası Stilleri */
+.applications-layout {
+   flex-direction: column;
+}
+
+.applications-container {
+   width: auto; /* İçeriğe göre genişlik ayarı */
+}
+
+.applications-container h2 {
+   font-size: 24px;
+   font-weight: 700;
+   color: #333;
+   margin-bottom: 20px;
+   text-align: left;
+}
+
+.applications-table-container {
+   overflow-x: auto;
+}
+
+table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px;
+   background-color: #fff;
+   border-radius: 10px;
+   overflow: hidden;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+   padding: 15px;
+   text-align: left;
+   border-bottom: 1px solid #ddd;
+}
+
+th {
+   background-color: #aab7c6;
+   color: #4a5d72;
+   font-weight: 700;
+}
+
+tr:last-child td {
+   border-bottom: none;
+}
+
+.status-suitable {
+   color: #28a745; /* Yeşil tonu */
+   font-weight: 600;
+}
+
+.status-not-suitable {
+   color: #dc3545; /* Kırmızı tonu */
+   font-weight: 600;
+}
+
+.view-btn {
+   padding: 8px 15px;
+   border: none;
+   border-radius: 5px;
+   background-color: #bf8b65; /* Görseldeki kahverengi tonu */
+   color: white;
+   cursor: pointer;
+   font-weight: 600;
+   transition: background-color 0.3s ease;
+}
+
+.view-btn:hover {
+   background-color: #a87856;
+}
+
+/* İlanlar Sayfası Stilleri */
+.ads-layout {
+   background-color: #a4b5c7; /* Panel arka planı */
+   padding: 40px;
+   border-radius: 40px;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+   /*display: flex !important;*/
+   flex-direction: column;
+}
+
+.ads-container {
+   background-color: transparent;
+   box-shadow: none;
+   width: auto;
+   padding: 0;
+   margin: 0;
+}
+
+.ads-container h2 {
+   color: #333;
+   font-size: 2em;
+   font-weight: bold;
+   margin-bottom: 20px;
+   text-align: left;
+   text-transform: capitalize;
+}
+
+.filter-bar {
+   display: flex;
+   align-items: center;
+   background-color: #d1d9e2;
+   padding: 15px;
+   border-radius: 10px;
+   gap: 15px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   margin-bottom: 20px;
+   flex-wrap: wrap; /* Küçük ekranlarda alta geçiş sağlar */
+}
+
+.filter-bar input[type="text"] {
+   flex-grow: 1; /* Yatayda genişlemesi için */
+   padding: 8px 12px;
+   border-radius: 5px;
+   border: 1px solid #ccc;
+   background-color: #fff;
+}
+
+.filter-bar .filters {
+   display: flex;
+   align-items: center;
+   flex-wrap: nowrap; /* Varsayılan olarak yan yana durur */
+   gap: 10px;
+}
+
+.filter-bar .filters .filter-icon {
+   font-weight: bold;
+   color: #555;
+   white-space: nowrap;
+}
+
+.filter-bar .filters label {
+   font-weight: 600;
+   color: #555;
+   white-space: nowrap; /* Metnin yeni satıra geçmesini engeller */
+   margin: 0;
+}
+
+.filter-bar .filters select {
+   padding: 8px;
+   border-radius: 5px;
+   border: 1px solid #ccc;
+   background-color: #fff;
+   cursor: pointer;
+   min-width: 80px;
+}
+
+.filter-bar .cancel-btn, .filter-bar .filter-btn {
+   padding: 8px 15px;
+   border-radius: 5px;
+   font-weight: 600;
+   cursor: pointer;
+   border: none;
+   white-space: nowrap; /* Metnin yeni satıra geçmesini engeller */
+}
+
+.filter-bar .cancel-btn {
+   background-color: #f44336;
+   color: white;
+}
+
+.filter-bar .filter-btn {
+   background-color: #6a829e;
+   color: white;
+}
+
+.job-ads-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   gap: 20px;
+}
+
+.ad-card {
+   background-color: #d1d9e2;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   position: relative;
+   border: 1px solid #aab7c6;
+   min-height: 200px;
+   display: flex;
+   flex-direction: column;
+}
+
+.ad-card h3 {
+   font-size: 1.2em;
+   font-weight: bold;
+   color: #333;
+   margin-top: 0;
+}
+
+.ad-card p {
+   font-size: 0.9em;
+   color: #666;
+   margin: 5px 0;
+}
+
+.ad-card .publish-date {
+   font-size: 0.8em;
+   font-style: italic;
+   color: #888;
+   margin-top: auto;
+}
+
+.ad-card .apply-btn {
+   background-color: #bf8b65;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   border-radius: 5px;
+   font-weight: 600;
+   cursor: pointer;
+   align-self: flex-end;
+   margin-top: 15px;
+}
+
+/* İşveren Sayfası Stilleri */
+.employer-layout {
+   flex-direction: column;
+}
+
+.employer-container {
+   width: 800px; /* Sabit genişlik */
+   max-width: 90%;
+}
+
+.employer-container h2 {
+   font-size: 2em;
+   font-weight: 700;
+   color: #333;
+   margin-bottom: 20px;
+   text-align: left;
+}
+
+.employer-container h3 {
+   font-size: 1.5em;
+   font-weight: 600;
+   color: #555;
+   margin-top: 30px;
+   margin-bottom: 15px;
+   text-align: left;
+}
+
+.add-ad-section {
+   text-align: left;
+}
+
+.add-ad-btn {
+   background-color: #bf8b65;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   border-radius: 8px;
+   font-weight: 600;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   gap: 5px;
+}
+
+.employer-ads-table-container {
+   overflow-x: auto;
+}
+
+.employer-ads-table-container table {
+   width: 100%;
+}
+
+.status-active {
+   color: #28a745;
+   font-weight: 600;
+}
+
+.status-passive {
+   color: #dc3545;
+   font-weight: 600;
+}
+
+.edit-btn {
+   padding: 8px 15px;
+   border: none;
+   border-radius: 5px;
+   background-color: #bf8b65;
+   color: white;
+   cursor: pointer;
+   font-weight: 600;
+   margin-right: 5px;
+}
+
+.delete-btn {
+   padding: 8px 15px;
+   border: none;
+   border-radius: 5px;
+   background-color: #aab7c6;
+   color: white;
+   cursor: pointer;
+   font-weight: 600;
+}
+
+/* Responsive Düzenlemeler */
+@media (max-width: 1200px) {
+   .profile-container, .employer-container {
+       flex-direction: column;
+   }
+}
+
+@media (max-width: 992px) {
+   .login-panel-container {
+       flex-direction: column;
+       padding: 30px;
+       gap: 20px;
+   }
+
+   .login-panel, .forgot-password-panel, .register-panel {
+       width: 100%;
+       padding: 30px;
+   }
+
+   .profile-info-panel, .education-panel, .employer-container {
+       width: 100%;
+   }
+
+   .back-to-home-btn {
+       position: static;
+       margin-top: 20px;
+       margin-left: auto;
+       margin-right: auto;
+   }
+
+   .filter-bar {
+       flex-direction: column;
+       align-items: stretch;
+   }
+
+   .filter-bar .filters {
+       flex-wrap: wrap; /* Bu durumda alt alta geçişe izin ver */
+       justify-content: flex-start;
+       margin-top: 10px;
+   }
+
+   .filter-bar .filters label, .filter-bar .filters select {
+       width: calc(50% - 5px); /* İki sütunlu bir düzen oluşturur */
+   }
+   
+   .filter-bar .cancel-btn, .filter-bar .filter-btn {
+       width: 100%;
+       margin-top: 10px;
+   }
+}
+
+@media (max-width: 768px) {
+   header {
+       flex-direction: column;
+       text-align: center;
+   }
+
+   .nav-buttons {
+       margin-top: 10px;
+   }
+
+   .search-box {
+       margin-top: 10px;
+   }
+
+   .login-btn-main, .register-btn-main {
+       padding: 12px 20px;
+       font-size: 1em;
+   }
+
+   .WELCOME h2 {
+       font-size: 2em;
+   }
+
+   .WELCOME p {
+       font-size: 1em;
+   }
+   
+   .filter-bar .filters label, .filter-bar .filters select {
+       width: 100%;
+   }
+}
+
+/* --- Kullanıcı Listesi Sayfası için Yeni Stiller --- */
+.users-list-layout {
+   display: none; /* Varsayılan olarak gizle */
+   text-align: center;
+}
+
+.users-list-layout.active {
+   display: block; /* Aktif olduğunda göster */
+}
+
+.users-container {
+   width: 80%;
+   max-width: 800px;
+   margin: 40px auto;
+   background-color: #fff;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.users-container h2 {
+   color: #007BFF;
+}
+
+#fetch-users-btn {
+   padding: 10px 20px;
+   font-size: 16px;
+   cursor: pointer;
+   background-color: #007BFF;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   margin-bottom: 20px;
+}
+
+#fetch-users-btn:hover {
+   background-color: #0056b3;
+}
+
+#users-table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px;
+}
+
+#users-table, #users-table th, #users-table td {
+   border: 1px solid #ddd;
+}
+
+#users-table th, #users-table td {
+   padding: 12px;
+   text-align: left;
+}
+
+#users-table th {
+   background-color: #f2f2f2;
+   color: #555;
+}
+
+#users-table tr:nth-child(even) {
+   background-color: #f9f9f9;
+}
+
+#loading-message.hidden, #users-table.hidden {
+   display: none;
+}
+/* --- Yeni stillerin sonu --- */

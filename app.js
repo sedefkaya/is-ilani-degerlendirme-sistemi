@@ -172,8 +172,9 @@ app.post('/api/register', async (req, res) => {
 app.get('/api/user/:id', (req, res) => {
     const userId = req.params.id;
     const sql = `
-        SELECT k.kullanici_ID, k.adSoyad, k.mail, k.adres, k.dg_date, k.tel, k.cinsiyet, k.askerlik_ID, k.medeniHal_ID, k.ogrenimDurumuID, k.sehir_ID, k.ehliyet_ID, d.adi AS dil, ds.seviye AS seviye
+        SELECT k.kullanici_ID, k.adSoyad, k.mail, k.adres, k.dg_date, k.tel, k.cinsiyet, k.askerlik_ID, k.medeniHal_ID, k.deneyim, k.ogrenimDurumuID, s.adi AS sehir, k.ehliyet_ID, d.adi AS dil, ds.seviye AS seviye
         FROM Kullanicilar k
+        LEFT JOIN sehir s ON k.sehir_ID = s.sehir_ID
         LEFT JOIN kullanici_dil kd ON k.kullanici_ID = kd.kullanici_ID
         LEFT JOIN dil d ON kd.dil_ID = d.dil_ID
         LEFT JOIN dilSeviyesi ds ON kd.seviye_ID = ds.seviye_ID
@@ -188,7 +189,7 @@ app.get('/api/user/:id', (req, res) => {
             return res.status(404).json({ error: "Kullanıcı bulunamadı" });
         }
         const userData = {
-            kullanici_ID: results[0].kullanici_ID, adSoyad: results[0].adSoyad, mail: results[0].mail, adres: results[0].adres, dg_date: results[0].dg_date, tel: results[0].tel, cinsiyet: results[0].cinsiyet, askerlik_ID: results[0].askerlik_ID, medeniHal_ID: results[0].medeniHal_ID, ogrenimDurumuID: results[0].ogrenimDurumuID, sehir_ID: results[0].sehir_ID, ehliyet_ID: results[0].ehliyet_ID, yabanciDiller: []
+            kullanici_ID: results[0].kullanici_ID, adSoyad: results[0].adSoyad, mail: results[0].mail, adres: results[0].adres, dg_date: results[0].dg_date, tel: results[0].tel, cinsiyet: results[0].cinsiyet, askerlik_ID: results[0].askerlik_ID, medeniHal_ID: results[0].medeniHal_ID, deneyim: results[0].deneyim, ogrenimDurumuID: results[0].ogrenimDurumuID, sehir: results[0].sehir, ehliyet_ID: results[0].ehliyet_ID, yabanciDiller: []
         };
         results.forEach(row => {
             if (row.dil && row.seviye) {
@@ -201,7 +202,7 @@ app.get('/api/user/:id', (req, res) => {
 
 // Profil güncelleme endpoint'i
 app.post('/api/updateProfile', (req, res) => {
-    const { kullanici_ID, adSoyad, mail, adres, dg_date, tel, cinsiyet, askerlik_ID, medeniHal_ID, ogrenimDurumuID, sehir_ID, ehliyet_ID, yabanciDiller } = req.body;
+    const { kullanici_ID, adSoyad, mail, adres, dg_date, tel, cinsiyet, askerlik_ID, medeniHal_ID, ogrenimDurumuID, sehir_ID, ehliyet_ID, deneyim, yabanciDiller } = req.body;
     if (!kullanici_ID) {
         return res.status(400).json({ success: false, message: "Kullanıcı ID gerekli." });
     }
@@ -209,8 +210,8 @@ app.post('/api/updateProfile', (req, res) => {
         if (err) {
             return res.status(500).json({ success: false, message: "Sunucu hatası." });
         }
-        const updateSql = `UPDATE Kullanicilar SET adSoyad = ?, mail = ?, adres = ?, dg_date = ?, tel = ?, cinsiyet = ?, askerlik_ID = ?, medeniHal_ID = ?, ogrenimDurumuID = ?, sehir_ID = ?, ehliyet_ID = ? WHERE kullanici_ID = ?`;
-        const params = [adSoyad, mail, adres, dg_date, tel, cinsiyet, askerlik_ID, medeniHal_ID, ogrenimDurumuID, sehir_ID, ehliyet_ID, kullanici_ID];
+        const updateSql = `UPDATE Kullanicilar SET adSoyad = ?, mail = ?, adres = ?, dg_date = ?, tel = ?, cinsiyet = ?, askerlik_ID = ?, medeniHal_ID = ?, ogrenimDurumuID = ?, sehir_ID = ?, ehliyet_ID = ?, deneyim = ? WHERE kullanici_ID = ?`;
+        const params = [adSoyad, mail, adres, dg_date, tel, cinsiyet, askerlik_ID, medeniHal_ID, ogrenimDurumuID, sehir_ID, ehliyet_ID, deneyim, kullanici_ID];
         connection.query(updateSql, params, (err, results) => {
             if (err) {
                 return connection.rollback(() => {

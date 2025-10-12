@@ -154,6 +154,8 @@ const fetchUserProfile = (kullanici_ID) => {
            // Ehliyet durumu
            if (data.ehliyet_ID === 1) document.getElementById("license-yes").checked = true;
            if (data.ehliyet_ID === 2) document.getElementById("license-no").checked = true;
+           
+           document.getElementById("experience-year").value = data.deneyim || "";
 
            // Askerlik durumu checkbox (örnek: askerlik_ID 1=var, 2=yok)
            document.getElementById("military-service").checked = data.askerlik_ID === 1;
@@ -209,7 +211,8 @@ document.getElementById('saveProfileBtn').addEventListener('click', async () => 
     console.log("Radyo butondan gelen ham değer:", medeniHal_value);
     const medeniHal_ID_final = medeniHal_value === 'married' ? 1 : (medeniHal_value === 'single' ? 2 : null);
     console.log("Dönüştürülen medeni hal ID'si:", medeniHal_ID_final);    
-    const sehir_ID = document.getElementById('city-select').value || null;
+    const sehirSelect = document.getElementById('city-select');
+    const sehir_ID = sehirSelect.value;
 
     const selectedEducationText = document.getElementById('education-level').value;
     const ogrenimDurumuID =selectedEducationText === "Ortaokul" ? 1 : 
@@ -243,6 +246,7 @@ document.getElementById('saveProfileBtn').addEventListener('click', async () => 
     
 
     const askerlik_ID = document.getElementById('military-service').checked ? 1 : 2; // Checkbox durumu
+    const experienceYear = document.getElementById('experience-year').value;
 
     // API'ye göndermek için veri objesi
     const data = {
@@ -254,6 +258,7 @@ document.getElementById('saveProfileBtn').addEventListener('click', async () => 
         tel,
         cinsiyet,
         medeniHal_ID: medeniHal_ID_final, 
+        deneyim: experienceYear ? parseInt(experienceYear) : 0, // Yeni eklenen satır
         sehir_ID,
         ogrenimDurumuID,
         ehliyet_ID: ehliyet_ID_final,
